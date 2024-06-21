@@ -1,17 +1,22 @@
-// Update this page (the content is just a fallback if you fail and example)
-// Use chakra-ui
-import { Container, Text, VStack } from "@chakra-ui/react";
+import { Container, VStack, Heading, Text, Box, StackDivider } from "@chakra-ui/react";
 
-// Example of using react-icons
-// import { FaRocket } from "react-icons/fa";
-// <IconButton aria-label="Add" icon={<FaRocket />} size="lg" />; // IconButton would also have to be imported from chakra
+const posts = [
+  { id: 1, title: "First Post", content: "This is the content of the first post." },
+  { id: 2, title: "Second Post", content: "This is the content of the second post." },
+  { id: 3, title: "Third Post", content: "This is the content of the third post." },
+];
 
 const Index = () => {
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4}>
-        <Text fontSize="2xl">Your Blank Canvas</Text>
-        <Text>Chat with the agent to start making edits.</Text>
+    <Container centerContent maxW="container.md" py={10}>
+      <VStack spacing={8} divider={<StackDivider borderColor="gray.200" />}>
+        <Heading as="h1" size="2xl">Posts</Heading>
+        {posts.map(post => (
+          <Box key={post.id} p={5} shadow="md" borderWidth="1px" borderRadius="md" width="100%">
+            <Heading as="h2" size="lg" mb={2}>{post.title}</Heading>
+            <Text>{post.content}</Text>
+          </Box>
+        ))}
       </VStack>
     </Container>
   );
